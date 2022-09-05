@@ -20,7 +20,7 @@ MultToDummy <- function(x, splitby = ";", bind = T) {
   
   # specifying column names
   colnames(fin_df) <- c(substitute(actual), 
-                        paste(actual, gsub(" ", "_", cols), sep="."))
+                        paste(actual, gsub("[ -]", "_", cols), sep="."))
   
   # If bind==True, return the actual variable along with the dummy variables
   # If bind==False, only return the dummy variables
