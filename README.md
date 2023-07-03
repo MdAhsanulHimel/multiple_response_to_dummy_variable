@@ -27,12 +27,12 @@ Using the function `MultToDummy()` you can easily make dummy variables for any o
 
 To use the function, run:
 ```{r}
-source("https://raw.githubusercontent.com/AhsanHimel/multiple_response_to_dummy_variable/master/MultToDummy.R")
+source("https://raw.githubusercontent.com/MdAhsanulHimel/multiple_response_to_dummy_variable/master/MultToDummy.R")
 ```
-**Arguments:**
-1. x: Specify the column as vetor element.
-2. splitby: default ';'. Specify which delimiter will be used to split the multiple responses.
-3. bind: default TRUE. Shows the original column along with the dummy variables.
+**Arguments:**   
+- x: Specify the column as vector element.   
+- splitby: default ';'. Specify which delimiter will be used to split the multiple responses.   
+- bind: default TRUE. Shows the original column along with the dummy variables.    
 
 Please [Contact me](https://rebrand.ly/ahsanul-linkedin) if you have any feature suggestions. 
 
