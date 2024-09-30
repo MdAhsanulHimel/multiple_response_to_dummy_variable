@@ -2,6 +2,11 @@ MultToDummy <- function(x, splitby = ";", bind = T) {
   
   # splits the multiple responses
   x_split <- strsplit(x, splitby, perl = TRUE) 
+  x_split <- lapply(x_split, function(x){
+    # removes commas + space if they are at the end of the string
+    x <- gsub(",\\s?$", "", x)   
+    return(x)
+  })
   
   # take the unique responses
   cols <- unique(unlist(x_split))
