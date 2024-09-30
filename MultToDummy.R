@@ -1,4 +1,18 @@
-MultToDummy <- function(x, splitby = ";", bind = T) {
+#' Split Multiple Response Variables into Dummies
+#'
+#' @param x Character vector of multiple responses
+#' @param splitby Character string used to split the multiple responses
+#' @param bind Logical. If bind is TRUE, the original variable is returned along with the dummy variables. If bind is FALSE, only the dummy variables are returned. Default is TRUE.
+#' @return A data frame with the original variable and the dummy variables, or just the dummy variables if bind is FALSE.
+#' @export
+#' @examples
+#' # Example for split by semicolon:
+#' MultToDummy(x, splitby = ";")
+#'
+#' # Example for split by capital letters:
+#' MultToDummy(x, splitby = "(?<=[A-Z])|(?=[A-Z])")
+#' 
+MultToDummy <- function(x, splitby = ";", bind = TRUE) {
   
   # splits the multiple responses
   x_split <- strsplit(x, splitby, perl = TRUE) 
@@ -29,9 +43,10 @@ MultToDummy <- function(x, splitby = ";", bind = T) {
   
   # If bind==True, return the actual variable along with the dummy variables
   # If bind==False, only return the dummy variables
-  ifelse(bind==T,
+  ifelse(bind==TRUE,
          # If True, return the actual variable along with the dummy variables
          # If False, return only the dummy variables
          return(fin_df),
          return(fin_df[,-1]))
 }
+
