@@ -29,9 +29,10 @@ To use the function, run:
 ```{r}
 source("https://raw.githubusercontent.com/MdAhsanulHimel/multiple_response_to_dummy_variable/master/MultToDummy.R")
 ```
+
 **Arguments:**   
 - x: Specify the column as vector element.   
-- splitby: default ';'. Specify which delimiter will be used to split the multiple responses.   
+- splitby: default ';'. Specify which delimiter will be used to split the multiple responses. Regex can also be used. For example use `(?<=.)(?=[A-Z])` to split before capital letters. (Example below)   
 - bind: default TRUE. Shows the original column along with the dummy variables.    
 
 Please [Contact me](https://rebrand.ly/ahsanul-linkedin) if you have any feature suggestions. 
@@ -72,3 +73,19 @@ MultToDummy(df$reason, split = ";", bind = FALSE)
 | 0                 | 0                     | 1                | 0                    | 1                    |
 | 0                 | 0                     | 0                | 1                    | 0                    |
 
+Consider a dataset like the following, where the capital letters identify the starting string of each options:
+```{r}
+MultToDummy(df$reason, split = "(?<=.)(?=[A-Z])", bind = FALSE)
+```
+| jobs                     | jobs.Daily_labor | jobs.Housekeeper | jobs.Job_holder |
+|--------------------------|------------------|------------------|-----------------|
+| Daily labor              | 1                | 0                | 0               |
+| Daily labor Housekeeper; | 1                | 1                | 0               |
+| Housekeeper              | 0                | 1                | 0               |
+| Housekeeper Job holder;  | 0                | 1                | 1               |
+| Daily labor              | 1                | 0                | 0               |
+| Daily labor Job holder;  | 1                | 0                | 1               |
+| Job holder               | 0                | 0                | 1               |
+| Daily labor              | 1                | 0                | 0               |
+| Daily labor              | 1                | 0                | 0               |
+| Daily labor              | 1                | 0                | 0               |
