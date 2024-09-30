@@ -1,7 +1,7 @@
 MultToDummy <- function(x, splitby = ";", bind = T) {
   
   # splits the multiple responses
-  x_split <- strsplit(x, splitby) 
+  x_split <- strsplit(x, splitby, perl = TRUE) 
   
   # take the unique responses
   cols <- unique(unlist(x_split))
